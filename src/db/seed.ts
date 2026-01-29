@@ -6,7 +6,6 @@ import { InferInsertModel } from "drizzle-orm";
 type UserInsert = InferInsertModel<typeof users>;
 
 async function seed() {
-  console.log("🌱 Seeding users...");
 
   const hashedPassword = await bcrypt.hash("Password123!", 10);
 

@@ -114,7 +114,7 @@ export const loginUser = async (
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Invalid email or password" });
+      return res.status(401).json({ message: "Invalid password" });
     }
 
     const token = jwt.sign(
@@ -133,7 +133,7 @@ export const loginUser = async (
   }
 };
 
-export const getUser = async (req : Request, res : Response) => {
+export const getUser = async (req : any, res : Response) => {
     try {
         const user = await db.select({ id: users.id, email: users.email, password: users.password, name: users.name, role: users.role, isBlocked: users.isBlocked, createdAt: users.createdAt }).from(users).where(eq(users.id, req.user.id));
 
@@ -145,7 +145,7 @@ export const getUser = async (req : Request, res : Response) => {
     }
 }
 
-export const updateUser = async (req: Request, res: Response) => {
+export const updateUser = async (req: any, res: Response) => {
  try {
      const { id } = req.user;
      const { name, email, password } = req.body;

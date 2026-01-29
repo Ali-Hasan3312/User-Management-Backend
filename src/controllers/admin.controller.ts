@@ -15,7 +15,7 @@ export const getAllUsers = async (req : Request, res : Response) => {
     }
 }
 
-export const updateAdmin = async (req: Request, res: Response) => {
+export const updateAdmin = async (req: any, res: Response) => {
   try {
     const { id } = req.user;
     const { name, email, password } = req.body;
